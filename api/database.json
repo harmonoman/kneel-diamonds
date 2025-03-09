@@ -17,5 +17,6 @@
         { "id": 3, "metal": "24K Gold", "price": 1258.9 },
         { "id": 4, "metal": "Platinum", "price": 795.45 },
         { "id": 5, "metal": "Palladium", "price": 1241.0 }
-    ]
+    ],
+    "orders": []
 }
