@@ -26,6 +26,7 @@ const render = async () => {
             <section class="choices_styles options">
                 <h2>Styles</h2>
                 ${styleOptionsHTML}
+                
             </section>
         </article>
 
