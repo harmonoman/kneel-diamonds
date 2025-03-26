@@ -1,17 +1,28 @@
+import { setStyleChoice } from "./transient-state.js";
+
 export const StyleOptions = async () => {
     const response = await fetch("http://localhost:8088/styles");
     const styles = await response.json();
 
-    let html = `
-        <select value="style">
-            <option value"" disabled selected>Choose a style</option>
-    `;
+    let optionsHTML = `<h2>Styles</h2>`;
 
-    for(const style of styles) {
-        html += `<option value"${style.id}">${style.style}`;
-    }
+    const divStringArray = styles.map(
+        (style) => {
+            return `<div>
+                <input type='radio' name='style' value='${style.id}' /> ${style.style}
+            </div>`;
+        }
+    )
 
-    html += `</select>`;
+    optionsHTML += divStringArray.join("");
 
-    return html;
+    return optionsHTML;
 }
+
+const handleStyleChoice = (event) => {
+    if (event.target.name === "style") {
+        setStyleChoice(parseInt(event.target.value));
+    }
+}
+
+document.addEventListener("change", handleStyleChoice);
