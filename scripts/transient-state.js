@@ -26,3 +26,20 @@ export const resetTransientState = () => {
     transientState.size = 0;
     transientState.style = 0;
 }
+
+export const placeOrder = async () => {
+    /*
+        Add the required keys to the object below that are needed for a POST operation.
+    */
+    const postOptions = {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify(transientState)
+    }
+
+    // Send the transient state to your API
+    const response = await fetch("http://localhost:8088/orders", postOptions);
+    console.log("response: ", response)
+
+    resetTransientState();
+}
