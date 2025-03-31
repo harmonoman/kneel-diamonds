@@ -8,9 +8,12 @@ export const FetchAndDisplayOrders = async () => {
         const sizePrice = order.size.price.toLocaleString("en-US", { style: "currency", currency: "USD" });
         const metalPrice = order.metal.price.toLocaleString("en-US", { style: "currency", currency: "USD" });
 
+        const totalPrice = (order.style.price + order.size.price + order.metal.price).toLocaleString("en-US", { style: "currency", currency: "USD" });;
+
+
         return `
         <div class="order">
-            <p><strong>Order #${order.id}</strong></p>
+            <p><strong>Order #${order.id} cost ${totalPrice}</strong></p>
             <p>Style:  ${order.style.style} (${stylePrice})</p>
             <p>Size: ${order.size.carets} (${sizePrice})</p>
             <p>Metal: ${order.metal.metal} (${metalPrice})</p>
