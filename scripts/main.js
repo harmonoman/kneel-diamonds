@@ -1,3 +1,4 @@
+import { FetchAndDisplayOrders } from "./display-orders.js";
 import { MetalOptions } from "./metal-options.js";
 import { saveOrder } from "./save-order.js";
 import { SizeOptions } from "./size-options.js";
@@ -10,6 +11,7 @@ const render = async () => {
     const sizeOptionsHTML = await SizeOptions();
     const styleOptionsHTML = await StyleOptions();
     const placeOrderButton = saveOrder();
+    const fetchedOrders = await FetchAndDisplayOrders();
 
     const composedHTML = `
         <h1>Kneel Diamonds</h1>
@@ -34,10 +36,15 @@ const render = async () => {
 
         <article class="customOrders">
             <h2>Custom Jewelry Orders</h2>
-
+            ${fetchedOrders}
         </article>
     `
     container.innerHTML = composedHTML;
 }
 
 render();
+
+document.addEventListener("newOrderPlaced", event => {
+    console.log("State of data has changed.  Regenerating HTML...")
+    render()
+})
