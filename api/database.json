@@ -72,22 +72,10 @@
   ],
   "orders": [
     {
-      "metal": 3,
-      "size": 3,
-      "style": 2,
+      "metalId": 1,
+      "sizeId": 1,
+      "styleId": 1,
       "id": 1
-    },
-    {
-      "metal": 5,
-      "size": 5,
-      "style": 1,
-      "id": 2
-    },
-    {
-      "metal": 0,
-      "size": 0,
-      "style": 0,
-      "id": 3
     }
   ]
 }
