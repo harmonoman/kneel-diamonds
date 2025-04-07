@@ -1,7 +1,6 @@
 export const FetchAndDisplayOrders = async () => {
     const response = await fetch("http://localhost:8088/orders?_expand=style&_expand=size&_expand=metal&_expand=jewelry")
     const orders = await response.json();
-    console.log(orders)
 
     let ordersHTML = orders.map((order) => {
 

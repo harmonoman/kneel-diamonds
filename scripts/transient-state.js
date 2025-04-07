@@ -7,18 +7,26 @@ const transientState = {
 
 export const setMetalChoice = (metalChoice) => {
     transientState.metalId = metalChoice;
+    document.dispatchEvent(new CustomEvent("newOrderPlaced"));
 }
 
 export const setSizeChoice = (sizeChoice) => {
     transientState.sizeId = sizeChoice;
+    document.dispatchEvent(new CustomEvent("newOrderPlaced"));
 }
 
 export const setStyleChoice = (styleChoice) => {
     transientState.styleId = styleChoice;
+    document.dispatchEvent(new CustomEvent("newOrderPlaced"));
 }
 
 export const setJewelryChoice = (jewelryChoice) => {
     transientState.jewelryId = jewelryChoice;
+    document.dispatchEvent(new CustomEvent("newOrderPlaced"));
+}
+
+export const getTransientState = () => {
+    return structuredClone(transientState);
 }
 
 export const resetTransientState = () => {
