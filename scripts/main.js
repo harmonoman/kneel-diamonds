@@ -1,4 +1,5 @@
 import { FetchAndDisplayOrders } from "./display-orders.js";
+import { JewelryType } from "./jewelry-type.js";
 import { MetalOptions } from "./metal-options.js";
 import { saveOrder } from "./save-order.js";
 import { SizeOptions } from "./size-options.js";
@@ -10,6 +11,7 @@ const render = async () => {
     const metalOptionsHTML = await MetalOptions();
     const sizeOptionsHTML = await SizeOptions();
     const styleOptionsHTML = await StyleOptions();
+    const jewelryType = await JewelryType();
     const placeOrderButton = saveOrder();
     const fetchedOrders = await FetchAndDisplayOrders();
 
@@ -17,17 +19,21 @@ const render = async () => {
         <h1>Kneel Diamonds</h1>
 
         <article class="choices">
-            <section class="choices_metals options">
+            <section class="options">
                 ${metalOptionsHTML}
             </section>
 
-            <section class="choices_sizes options">
+            <section class="options">
                 ${sizeOptionsHTML}
             </section>
 
-            <section class="choices_styles options">
+            <section class="options">
                 ${styleOptionsHTML}
             </section>
+        </article>
+
+        <article class="jewelryOptions">
+            ${jewelryType}
         </article>
 
         <article class="order">
