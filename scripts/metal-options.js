@@ -1,16 +1,19 @@
-import { setMetalChoice } from "./transient-state.js";
+import { setMetalChoice, getTransientState } from "./transient-state.js";
 
 export const MetalOptions = async () => {
     const response = await fetch("http://localhost:8088/metals");
     const metals = await response.json();
+
+    const state = getTransientState();
 
     let optionsHTML = "<h2>Metals</h2>"
 
     // Use map() to generate new array of strings
     const divStringArray = metals.map(
         (metal) => {
+            const isChecked = state.metalId === metal.id ? "checked" : "";
             return `<div>
-                <input type='radio' name='metal' value='${metal.id}' /> ${metal.metal}
+                <input type='radio' name='metal' value='${metal.id}' ${isChecked} /> ${metal.metal}
             <div>`
         }
     )
